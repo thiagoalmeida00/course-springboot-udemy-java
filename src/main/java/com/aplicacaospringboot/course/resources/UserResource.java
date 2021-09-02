@@ -25,5 +25,5 @@ public class UserResource {
 		// retornar resposta sucess Http
 		return ResponseEntity.ok().body(user);
 	}
-	
+
 }
