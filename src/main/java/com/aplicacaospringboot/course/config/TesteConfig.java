@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.aplicacaospringboot.course.entities.Category;
 import com.aplicacaospringboot.course.entities.Order;
 import com.aplicacaospringboot.course.entities.OrderItem;
+import com.aplicacaospringboot.course.entities.Payment;
 import com.aplicacaospringboot.course.entities.Product;
 import com.aplicacaospringboot.course.entities.User;
 import com.aplicacaospringboot.course.entities.enums.OrderStatus;
@@ -82,6 +83,11 @@ public class TesteConfig implements CommandLineRunner {
 		
 		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 		
+		// associou o pedido com o pagamento, salva o pedido (associação de mão dupla, não precisa criar um repositório para classe dependente)
+		Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+		o1.setPayment(pay1);
+		
+		orderRepository.save(o1);
 	}
 
 }
