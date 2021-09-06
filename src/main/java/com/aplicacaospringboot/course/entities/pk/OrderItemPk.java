@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 
 import com.aplicacaospringboot.course.entities.Order;
 import com.aplicacaospringboot.course.entities.Product;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 // tabela de associação a outras entidades
 @Embeddable
@@ -24,6 +25,7 @@ public class OrderItemPk implements Serializable {
 	@JoinColumn(name = "product_id")
 	private Product product;
 	
+	@JsonIgnore
 	public Order getOrder() {
 		return order;
 	}
